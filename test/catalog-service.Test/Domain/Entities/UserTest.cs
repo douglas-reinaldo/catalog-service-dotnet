@@ -18,23 +18,10 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
 
             // Assert
             Assert.NotNull(user);
-        }
-
-        [Fact]
-        public void CreateUser_Should_Throw_Exception_When_Id_Is_Invalid()
-        {
-            // Arrange
-            string firstName = "UserFirstname";
-            string lastName = "UserLastname";
-            string emailAddress = "UserEmailAddress";
-            string hashPassword = "UserHashedPassword";
-
-            // Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(0, firstName, lastName, emailAddress, hashPassword));
         }
 
         [Fact]
@@ -46,7 +33,7 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(1, "", lastName, emailAddress, hashPassword));
+            Assert.Throws<ArgumentException>(() => new User("", lastName, emailAddress, hashPassword));
         }
 
         [Fact]
@@ -58,7 +45,7 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(1, firstName, "", emailAddress, hashPassword));
+            Assert.Throws<ArgumentException>(() => new User(firstName, "", emailAddress, hashPassword));
         }
 
         [Fact]
@@ -70,7 +57,7 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(1, firstName, lastName, "", hashPassword));
+            Assert.Throws<ArgumentException>(() => new User(firstName, lastName, "", hashPassword));
         }
 
         [Fact]
@@ -82,7 +69,7 @@ namespace catalog_service.Test.Domain.Entities
             string emailAddress = "UserEmailAddress";
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(1, firstName, lastName, emailAddress, ""));
+            Assert.Throws<ArgumentException>(() => new User(firstName, lastName, emailAddress, ""));
         }
 
         [Fact]
@@ -95,7 +82,7 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
 
             // Assert
             Assert.NotEqual(default(DateTime), user.CreatedAt);
@@ -111,7 +98,7 @@ namespace catalog_service.Test.Domain.Entities
             string hashPassword = "UserHashedPassword";
 
             // Act
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
 
             // Assert
             Assert.True(user.IsActive);
@@ -125,7 +112,7 @@ namespace catalog_service.Test.Domain.Entities
             string lastName = "UserLastname";
             string emailAddress = "UserEmailAddress";
             string hashPassword = "UserHashedPassword";
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
             user.Deactivate();
 
             // Act
@@ -143,7 +130,7 @@ namespace catalog_service.Test.Domain.Entities
             string lastName = "UserLastname";
             string emailAddress = "UserEmailAddress";
             string hashPassword = "UserHashedPassword";
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
 
             // Act
             user.Activate();
@@ -160,7 +147,7 @@ namespace catalog_service.Test.Domain.Entities
             string lastName = "UserLastname";
             string emailAddress = "UserEmailAddress";
             string hashPassword = "UserHashedPassword";
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
 
             // Act
             user.Deactivate();
@@ -177,7 +164,7 @@ namespace catalog_service.Test.Domain.Entities
             string lastName = "UserLastname";
             string emailAddress = "UserEmailAddress";
             string hashPassword = "UserHashedPassword";
-            User user = new User(1, firstName, lastName, emailAddress, hashPassword);
+            User user = new User(firstName, lastName, emailAddress, hashPassword);
             user.Deactivate();
 
             // Act
