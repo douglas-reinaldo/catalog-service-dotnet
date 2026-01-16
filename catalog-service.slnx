@@ -1,5 +1,14 @@
 <Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path=".gitignore" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/catalog-service.Api/catalog-service.Api.csproj" />
+    <Project Path="src/catalog-service.Application/catalog-service.Application.csproj" />
+    <Project Path="src/catalog-service.Domain/catalog-service.Domain.csproj" />
+    <Project Path="src/catalog-service.Infrastructure/catalog-service.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/catalog-service.Test/catalog-service.Test.csproj" />
   </Folder>
 </Solution>
