@@ -12,13 +12,8 @@ public class User
     public bool IsActive { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
-    public User(int id, string firstName, string lastName, string emailAddress, string hashPassword)
+    public User(string firstName, string lastName, string emailAddress, string hashPassword)
 	{
-        if (id <= 0) 
-        {
-            throw new ArgumentException("Id is required and must be greater than zero.", nameof(id));
-        }
-
         if (string.IsNullOrWhiteSpace(firstName)) 
         {
             throw new ArgumentException("First name is required.", nameof(firstName));
@@ -38,7 +33,6 @@ public class User
             throw new ArgumentException("Hashed password is required.", nameof(hashPassword));
         }
 
-        Id = id;
         FirstName = firstName;
         LastName = lastName;
         EmailAddress = emailAddress;
