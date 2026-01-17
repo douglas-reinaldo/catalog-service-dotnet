@@ -1,6 +1,15 @@
 @catalog_service.Api_HostAddress = http://localhost:5146
 
-GET {{catalog_service.Api_HostAddress}}/weatherforecast/
+POST {{catalog_service.Api_HostAddress}}/api/Users
+Content-Type: application/json
 Accept: application/json
 
+{
+  "FirstName": "Douglas",
+  "LastName": "Reinaldo",
+  "EmailAddress": "Douglas39510@gmail.com",
+  "Password": "P@ssword123"
+}
+
 ###
+
