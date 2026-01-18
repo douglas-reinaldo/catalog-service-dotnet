@@ -1,4 +1,4 @@
-﻿using catalog_service.Application.Common.Interfaces.Persistence;
+﻿using catalog_service.Domain.Interfaces;
 using catalog_service.Domain.Entities;
 using catalog_service.Infrastructure.Persistence;
 using System;

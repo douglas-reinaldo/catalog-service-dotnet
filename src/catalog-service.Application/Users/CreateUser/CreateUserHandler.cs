@@ -1,4 +1,4 @@
-﻿using catalog_service.Application.Common.Interfaces.Persistence;
+﻿using catalog_service.Domain.Interfaces;
 using catalog_service.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace catalog_service.Application.Users.CreateUser
             await _userRepository.AddAsync(user);
             await _unitOfWork.CommitAsync();
 
-            return new CreateUserResult(user.Id);
+            return new CreateUserResult(user.Id.Value);
         }
     }
 }

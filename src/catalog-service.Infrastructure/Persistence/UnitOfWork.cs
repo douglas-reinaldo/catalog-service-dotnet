@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using catalog_service.Application.Common.Interfaces.Persistence;
+using catalog_service.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace catalog_service.Infrastructure.Persistence

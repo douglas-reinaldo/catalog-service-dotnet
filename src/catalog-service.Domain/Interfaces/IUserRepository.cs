@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace catalog_service.Application.Common.Interfaces.Persistence
+namespace catalog_service.Domain.Interfaces
 {
     public interface IUserRepository
     {
