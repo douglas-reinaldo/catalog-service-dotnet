@@ -1,5 +1,6 @@
 ﻿using catalog_service.Api.DTOs.User;
 using catalog_service.Application.Users.CreateUser;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +11,10 @@ namespace catalog_service.Api.Controllers
     public class UsersController : ControllerBase
     {
 
-        private CreateUserHandler _userHandler;
-
-        public UsersController(CreateUserHandler userHandler) 
+        private readonly IMediator _mediator;
+        public UsersController(IMediator mediator) 
         {
-            _userHandler = userHandler;
+            _mediator = mediator;
         }
 
         [HttpPost]
@@ -28,7 +28,7 @@ namespace catalog_service.Api.Controllers
                     HashPassword: createUserRequest.Password
                 );
 
-            var user = await _userHandler.Handle(command);
+            var user = await _mediator.Send(command);
             return Created(String.Empty, user.UserId);
         }
     }

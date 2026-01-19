@@ -1,10 +1,14 @@
 using catalog_service.Api.Extensions;
+using catalog_service.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+
+
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
