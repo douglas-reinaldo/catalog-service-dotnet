@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,5 +11,6 @@ namespace catalog_service.Application.Users.CreateUser
         string LastName,
         string EmailAddress,
         string HashPassword
-    );
+
+    ) : IRequest<CreateUserResult>;
 }

@@ -1,5 +1,6 @@
-﻿using catalog_service.Domain.Interfaces;
-using catalog_service.Domain.Entities;
+﻿using catalog_service.Domain.Entities;
+using catalog_service.Domain.Interfaces;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalog_service.Application.Users.CreateUser
 {
-    public class CreateUserHandler
+    public class CreateUserHandler : IRequestHandler<CreateUserCommand, CreateUserResult>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -16,7 +17,7 @@ namespace catalog_service.Application.Users.CreateUser
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CreateUserResult> Handle(CreateUserCommand command) 
+        public async Task<CreateUserResult> Handle(CreateUserCommand command, CancellationToken cancellationToken)
         {
             if (command == null) 
             {
@@ -34,5 +35,7 @@ namespace catalog_service.Application.Users.CreateUser
 
             return new CreateUserResult(user.Id!.Value);
         }
+
+       
     }
 }
