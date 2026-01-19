@@ -1,6 +1,4 @@
-﻿using catalog_service.Application;
-using catalog_service.Application.Users.CreateUser;
-using catalog_service.Domain.Interfaces;
+﻿using catalog_service.Domain.Interfaces;
 using catalog_service.Infrastructure.Persistence;
 using catalog_service.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;

@@ -2,8 +2,9 @@
 
 namespace catalog_service.Api.DTOs.User
 {
-    public record CreateUserRequest
+    public record UpdateUserRequest
     (
+
         [Required]
         [StringLength(100, MinimumLength = 3)]
         string FirstName,
@@ -15,10 +16,6 @@ namespace catalog_service.Api.DTOs.User
         [Required]
         [EmailAddress]
         [StringLength(100)]
-        string EmailAddress,
-
-        [Required]
-        [StringLength(250, MinimumLength = 8)]
-        string Password
+        string EmailAddress
     );
 }
