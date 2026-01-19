@@ -25,6 +25,7 @@ namespace catalog_service.Api.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<CreateUserHandler>();
+            
 
             return services;
         }

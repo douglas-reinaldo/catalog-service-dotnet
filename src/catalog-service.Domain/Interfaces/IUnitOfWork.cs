@@ -7,6 +7,7 @@ namespace catalog_service.Domain.Interfaces
 {
     public interface IUnitOfWork
     {
+        IUserRepository UserRepository { get; }
         Task CommitAsync();
     }
 }

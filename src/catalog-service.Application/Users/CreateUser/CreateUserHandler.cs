@@ -9,27 +9,30 @@ namespace catalog_service.Application.Users.CreateUser
 {
     public class CreateUserHandler
     {
-        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateUserHandler(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        public CreateUserHandler(IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
 
         public async Task<CreateUserResult> Handle(CreateUserCommand command) 
         {
+            if (command == null) 
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
             var user = new User(
                 command.FirstName,
                 command.LastName,
                 command.EmailAddress,
                 command.HashPassword);
 
-            await _userRepository.AddAsync(user);
+            await _unitOfWork.UserRepository.AddAsync(user);
             await _unitOfWork.CommitAsync();
 
-            return new CreateUserResult(user.Id.Value);
+            return new CreateUserResult(user.Id!.Value);
         }
     }
 }

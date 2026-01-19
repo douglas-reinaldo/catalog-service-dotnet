@@ -29,7 +29,7 @@ namespace catalog_service.Api.Controllers
                 );
 
             var user = await _userHandler.Handle(command);
-            return Ok(user);
+            return Created(String.Empty, user.UserId);
         }
     }
 }
