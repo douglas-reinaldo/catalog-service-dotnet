@@ -8,7 +8,7 @@ namespace catalog_service.Domain.Interfaces
     public interface IUserRepository
     {
         Task AddAsync(User user);
-        Task<User> GetByIdAsync(int id);
+        Task<User?> GetByIdAsync(int id);
     }
 
 

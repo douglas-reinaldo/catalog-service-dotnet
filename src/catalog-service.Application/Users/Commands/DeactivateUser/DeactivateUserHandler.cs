@@ -10,10 +10,7 @@ namespace catalog_service.Application.Users.Commands.DeactivateUser
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeactivateUserHandler(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+        public DeactivateUserHandler(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
 
         public async Task Handle(DeactivateUserCommand request, CancellationToken cancellationToken)

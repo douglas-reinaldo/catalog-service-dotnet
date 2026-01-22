@@ -2,10 +2,10 @@
 using catalog_service.Application.Users.Commands.DeactivateUser;
 using catalog_service.Application.Users.Commands.RegisterUser;
 using catalog_service.Application.Users.Commands.UpdateUserProfile;
+using catalog_service.Application.Users.Queries.GetUserById;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
+
 
 namespace catalog_service.Api.Controllers
 {
@@ -31,8 +31,8 @@ namespace catalog_service.Api.Controllers
                     HashPassword: createUserRequest.Password
                 );
 
-            var result = await _mediator.Send(command);
-            return Created(String.Empty, result);
+            var userId = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetById), new {id = userId}, null);
         }
 
         [HttpPut("{Id}")]
@@ -45,8 +45,8 @@ namespace catalog_service.Api.Controllers
                 EmailAddress: updateUserRequest.EmailAddress
                 );
 
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            var userId = await _mediator.Send(command);
+            return Ok(userId);
         }
 
 
@@ -55,7 +55,17 @@ namespace catalog_service.Api.Controllers
         {
             var command = new DeactivateUserCommand(Id);
             await _mediator.Send(command);
+
             return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id) 
+        {
+            var userDetails = await _mediator.Send(new GetUserByIdQuery(id));
+            if (userDetails == null) return NotFound();
+
+            return Ok(userDetails);
         }
     }
 }
