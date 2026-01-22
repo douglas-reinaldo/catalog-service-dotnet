@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace catalog_service.Application.Users.Commands.UpdateUser
+namespace catalog_service.Application.Users.Commands.UpdateUserProfile
 {
-    public sealed record UpdateUserCommand 
+    public sealed record UpdateUserProfileCommand 
     (
         int Id,
         string FirstName,

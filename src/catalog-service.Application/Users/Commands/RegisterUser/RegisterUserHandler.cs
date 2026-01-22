@@ -6,18 +6,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace catalog_service.Application.Users.Commands.CreateUser
+namespace catalog_service.Application.Users.Commands.RegisterUser
 {
-    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, int>
+    public sealed class RegisterUserHandler : IRequestHandler<RegisterUserCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateUserHandler(IUnitOfWork unitOfWork)
+        public RegisterUserHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<int> Handle(CreateUserCommand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(command);
 

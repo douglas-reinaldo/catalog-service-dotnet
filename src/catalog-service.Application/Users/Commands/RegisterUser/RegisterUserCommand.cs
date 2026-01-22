@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace catalog_service.Application.Users.Commands.CreateUser
+namespace catalog_service.Application.Users.Commands.RegisterUser
 {
-    public sealed record CreateUserCommand
+    public sealed record RegisterUserCommand
     (
         string FirstName,
         string LastName,

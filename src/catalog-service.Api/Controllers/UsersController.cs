@@ -1,7 +1,7 @@
 ﻿using catalog_service.Api.DTOs.User;
-using catalog_service.Application.Users.Commands.CreateUser;
 using catalog_service.Application.Users.Commands.DeactivateUser;
-using catalog_service.Application.Users.Commands.UpdateUser;
+using catalog_service.Application.Users.Commands.RegisterUser;
+using catalog_service.Application.Users.Commands.UpdateUserProfile;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +23,7 @@ namespace catalog_service.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserRequest createUserRequest)
         {
-            var command = new CreateUserCommand
+            var command = new RegisterUserCommand
                 (
                     FirstName: createUserRequest.FirstName,
                     LastName: createUserRequest.LastName,
@@ -38,7 +38,7 @@ namespace catalog_service.Api.Controllers
         [HttpPut("{Id}")]
         public async Task<IActionResult> Update(int Id, [FromBody] UpdateUserRequest updateUserRequest) 
         {
-            var command = new UpdateUserCommand(
+            var command = new UpdateUserProfileCommand(
                 Id: Id,
                 FirstName: updateUserRequest.FirstName,
                 LastName: updateUserRequest.LastName,

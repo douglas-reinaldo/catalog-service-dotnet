@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace catalog_service.Application.Users.Commands.UpdateUser
+namespace catalog_service.Application.Users.Commands.UpdateUserProfile
 {
-    public sealed class UpdateUserHandler : IRequestHandler<UpdateUserCommand, int>
+    public sealed class UpdateUserProfileHandler : IRequestHandler<UpdateUserProfileCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateUserHandler(IUnitOfWork unitOfWork)
+        public UpdateUserProfileHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<int> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(request);
 
