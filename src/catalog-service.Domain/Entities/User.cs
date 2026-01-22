@@ -5,7 +5,7 @@ using System;
 
 public class User
 {
-    public int? Id { get; private set; }
+    public int Id { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string EmailAddress { get; private set; }
@@ -32,6 +32,14 @@ public class User
         DomainValidation.When(string.IsNullOrWhiteSpace(emailAddress), "Email address is required.");
         DomainValidation.When(string.IsNullOrWhiteSpace(hashPassword), "Hashed password is required.");
 
+    }
+
+    public void Update(string firstName, string lastName, string emailAddress)
+    {
+        ValidateDomain(firstName, lastName, emailAddress, HashPassword);
+        FirstName = firstName;
+        LastName = lastName;
+        EmailAddress = emailAddress;
     }
 
     public void Deactivate()

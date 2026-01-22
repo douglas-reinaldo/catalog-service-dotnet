@@ -1,9 +1,11 @@
 ﻿using catalog_service.Api.DTOs.User;
 using catalog_service.Application.Users.Commands.CreateUser;
+using catalog_service.Application.Users.Commands.DeactivateUser;
 using catalog_service.Application.Users.Commands.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace catalog_service.Api.Controllers
 {
@@ -29,8 +31,8 @@ namespace catalog_service.Api.Controllers
                     HashPassword: createUserRequest.Password
                 );
 
-            var user = await _mediator.Send(command);
-            return Created(String.Empty, user.UserId);
+            var result = await _mediator.Send(command);
+            return Created(String.Empty, result);
         }
 
         [HttpPut("{Id}")]
@@ -44,7 +46,16 @@ namespace catalog_service.Api.Controllers
                 );
 
             var result = await _mediator.Send(command);
-            return Ok(result.UserId);
+            return Ok(result);
+        }
+
+
+        [HttpPatch("{Id}/deactivate")]
+        public async Task<IActionResult> Deactivate(int Id) 
+        {
+            var command = new DeactivateUserCommand(Id);
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace catalog_service.Application.Users.CreateUser
+namespace catalog_service.Application.Users.Commands.CreateUser
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserCommand, CreateUserResult>
+    public sealed class CreateUserHandler : IRequestHandler<CreateUserCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -17,12 +17,9 @@ namespace catalog_service.Application.Users.CreateUser
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CreateUserResult> Handle(CreateUserCommand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateUserCommand command, CancellationToken cancellationToken)
         {
-            if (command == null) 
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            ArgumentNullException.ThrowIfNull(command);
 
             var user = new User(
                 command.FirstName,
@@ -33,7 +30,7 @@ namespace catalog_service.Application.Users.CreateUser
             await _unitOfWork.UserRepository.AddAsync(user);
             await _unitOfWork.CommitAsync();
 
-            return new CreateUserResult(user.Id!.Value);
+            return user.Id;
         }
 
        

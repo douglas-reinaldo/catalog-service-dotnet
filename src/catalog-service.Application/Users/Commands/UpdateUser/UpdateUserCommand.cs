@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace catalog_service.Application.Users.Commands.CreateUser
+namespace catalog_service.Application.Users.Commands.UpdateUser
 {
-    public sealed record CreateUserCommand
+    public sealed record UpdateUserCommand 
     (
+        int Id,
         string FirstName,
         string LastName,
-        string EmailAddress,
-        string HashPassword
-
+        string EmailAddress
     ) : IRequest<int>;
 }

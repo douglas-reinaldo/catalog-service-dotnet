@@ -20,5 +20,10 @@ namespace catalog_service.Infrastructure.Repositories
         {
             await _context.Users.AddAsync(user);
         }
+
+        public async Task<User?> GetByIdAsync(int id)
+        {
+            return await _context.Users.FindAsync(id);
+        }
     }
 }
